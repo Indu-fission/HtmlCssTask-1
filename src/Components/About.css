@@ -1,0 +1,41 @@
+/* About Page Styles */
+.about-page {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 6rem auto 2rem auto; /* Increased top margin to compensate for fixed header */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+}
+
+.about-title {
+    text-align: center;
+    color: #064663;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.about-content p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Mobile Responsive Styling */
+@media (max-width: 600px) {
+    .about-page {
+        padding: 1rem;
+        margin: 5rem 1rem 2rem 1rem; /* Smaller margin for mobile */
+    }
+
+    .about-title {
+        font-size: 1.5rem; /* Reduced font size on mobile */
+    }
+
+    .about-content p {
+        font-size: 1rem; /* Adjusted font size */
+        line-height: 1.6;
+    }
+}

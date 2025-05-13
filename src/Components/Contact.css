@@ -1,0 +1,50 @@
+/* Contact Page Styles */
+.contact-container {
+    background-color: white;
+    padding: 40px;
+    margin: 10rem auto 2rem auto; /* Increased top margin to compensate for fixed header */
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+
+.contact-title {
+    font-size: 2rem;
+    color: #064663;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact-text {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.contact-info p {
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+/* Mobile Responsive Styling */
+@media (max-width: 600px) {
+    .contact-container {
+        padding: 20px;
+        margin: 5rem 1rem 2rem 1rem; /* Smaller margin for mobile */
+    }
+
+    .contact-title {
+        font-size: 1.5rem; /* Reduced font size on mobile */
+    }
+
+    .contact-text {
+        font-size: 1rem; /* Adjusted font size */
+    }
+
+    .contact-info p {
+        font-size: 0.9rem; /* Smaller font size for mobile */
+    }
+}
