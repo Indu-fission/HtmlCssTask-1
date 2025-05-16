@@ -20,13 +20,14 @@
   }
   
   .logo {
-    width: 23%;
+    width: 6%;
     height: 10%;
   }
   
   .brand-name {
     font-size: 1.5rem;
     font-weight: bold;
+    padding:0.6rem;
   }
   
   .navbar {
@@ -42,7 +43,7 @@
   }
   
   .navbar a:hover {
-    color: #00bcd4;
+    color: hsl(23.16deg 80.73% 58.26%);;
   }
   
   .header-line {
@@ -74,4 +75,26 @@
     font-size: 12px;
   }
   
+  /* .cart-header-icon {
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    cursor: pointer;
+  }
   
+  .cart-header-icon .cart-icon {
+    width: 30px;
+    height: auto;
+  }
+  
+  .cart-count {
+    background-color: red;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 12px;
+    position: absolute;
+    top: -8px;
+    right: -10px;
+  }
+   */
