@@ -1,6 +1,6 @@
 import './CartPopup.css';
 
-function CartPopup({ show, cartItems, onClose, onRemove, updateQuantity, total }) {
+function CartPopup({ show, cartItems, onClose, onRemove, updateQuantity, total ,onProceedToBuy}) {
   if (!show) return null;
 
   return (
@@ -20,7 +20,7 @@ function CartPopup({ show, cartItems, onClose, onRemove, updateQuantity, total }
                 <img src={item.image} alt={item.title} />
                 <div className="item-details">
                   <p>{item.title}</p>
-                  <p>{item.price}</p>
+                  <p>${item.price}</p>
                   <div className="quantity-controls">
                     <button onClick={() => updateQuantity(item.id, -1)}>-</button>
                     <span>{item.quantity}</span>
@@ -30,7 +30,8 @@ function CartPopup({ show, cartItems, onClose, onRemove, updateQuantity, total }
                 <button onClick={() => onRemove(index)} className="remove-btn">Remove</button>
               </div>
             ))}
-            <div className="cart-total">Total: {total}</div>
+            <div className="cart-total">Total: ${total}</div>
+            <button className="proceed-btn" onClick={onProceedToBuy}>Proceed to Buy</button>
           </>
         )}
       </div>

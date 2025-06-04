@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import Header from './Components/Header/Header';
 import Products from './Components/Products/Products';
 import Footer from './Components/Footer/Footer';
@@ -7,14 +7,22 @@ import About from './Components/About/About';
 import Contact from './Components/Contact/Contact';
 import Home from './Components/Home/Home';
 import CartPopup from './Components/Cart/CartPopup';
+import CheckoutForm from './Components/CheckoutForm';
 import './App.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   const [cartItems, setCartItems] = useState(() => {
     const saved = localStorage.getItem('cart');
     return saved ? JSON.parse(saved) : [];
   });
+
+  const navigate = useNavigate();
+
   const [showCart, setShowCart] = useState(false);
+  const [showCheckout, setShowCheckout] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
@@ -53,26 +61,77 @@ function App() {
 
   const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
 
+  const handleProceedToBuy = () => {
+    setShowCart(false);
+    setShowCheckout(true);
+    navigate('/checkout');
+  };
+
+  const handleSuccessfulCheckout = () => {
+    setCartItems([]);
+    setShowCheckout(false);
+  };
+
+  const handleBackToCart = () => {
+    setShowCheckout(false);
+    setShowCart(true);
+    navigate('/products'); 
+  };
+
   return (
-    <Router>
+    <>
       <Header cartItems={cartItems} toggleCart={() => setShowCart(!showCart)} />
-      <CartPopup
-        show={showCart}
-        cartItems={cartItems}
-        onClose={() => setShowCart(false)}
-        onRemove={removeFromCart}
-        updateQuantity={updateQuantity}
-        total={total}
-      />
+
+      {showCart && (
+        <CartPopup
+          show={showCart}
+          cartItems={cartItems}
+          onClose={() => setShowCart(false)}
+          onRemove={removeFromCart}
+          updateQuantity={updateQuantity}
+          total={total}
+          onProceedToBuy={handleProceedToBuy}
+        />
+      )}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products addToCart={addToCart} />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route
+          path="/checkout"
+          element={
+            cartItems.length === 0 ? (
+              <Navigate to="/products" />
+            ) : (
+              <CheckoutForm
+                cartItems={cartItems}
+                totalAmount={total}
+                onSuccessfulCheckout={handleSuccessfulCheckout}
+                onBackToCart={handleBackToCart}
+              />
+            )
+          }
+        />
         <Route path="*" element={<Home />} />
       </Routes>
+      {/* <ToastContainer position="top-center" autoClose={4000} /> */}
+<ToastContainer
+  position="top-center"
+  autoClose={4000}
+  hideProgressBar={false}
+  newestOnTop
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+  theme="colored"
+/>
+
       <Footer />
-    </Router>
+    </>
   );
 }
 

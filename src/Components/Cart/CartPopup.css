@@ -66,6 +66,23 @@
   display: flex;
   gap: 10px;
   margin-top: 8px;
+  align-items: center;
+}
+
+.quantity-controls button {
+  border: none;
+  background-color: lightgray;
+  color:black;
+  font-size: 18px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: none;
+}
+
+.quantity-controls span {
+  min-width: 20px;
+  text-align: center;
+  display: inline-block;
 }
 
 /* Remove button - fixed style */
@@ -88,4 +105,16 @@
   margin-top: 20px;
   font-weight: bold;
   font-size: 16px;
+}
+
+.proceed-btn {
+  margin-top: 20px;
+  padding: 10px 16px;
+  background-color: green;
+  color: white;
+  border: none;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
 }
